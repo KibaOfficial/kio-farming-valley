@@ -6,9 +6,10 @@
 import { gameLoop } from "./game.js";
 
 function startGame() {
-    requestAnimationFrame((currentTime) => gameLoop(currentTime))
+  const startTime = performance.now();
+  gameLoop(startTime);
 }
 
 window.onload = () => {
-    startGame();
+  startGame();
 }

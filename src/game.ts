@@ -9,15 +9,16 @@ import { initCanvas } from "./utils.js";
 
 const deltaTime = new DeltaTime();
 
-export function gameLoop(currentTime: number) {
+export function gameLoop(currentTime: DOMHighResTimeStamp) {
   if (!getGameInit()) {
     const { game, gameCtx } = initCanvas();
-    setGameInit(true)
+    setGameInit(true);
   }
 
   if (getGameRun() && !isPaused) {
-    const dt = deltaTime.getDelta();
+    deltaTime.update(currentTime);
 
-    requestAnimationFrame(gameLoop)
+    const dt = deltaTime.getDelta();
+    requestAnimationFrame(gameLoop);
   }
 }

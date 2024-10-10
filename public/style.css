@@ -4,3 +4,13 @@
  * This software is released under the MIT License.
  * https://opensource.org/licenses/MIT
  */
+
+body {
+  margin: 0;
+  overflow: hidden; /* Prevents scrolling */
+}
+
+canvas {
+  display: block;
+  background-color: #87CEEB;
+}

@@ -3,35 +3,44 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-let gameInit = false;
-let gameRun = true;
-let paused = false;
+let gameInit: boolean = false;
+let gameRun: boolean = true;
+let paused: boolean = false;
 
 export interface GameCanvas {
-  game: HTMLCanvasElement;
-  gameCtx: CanvasRenderingContext2D;
+    game: HTMLCanvasElement | null;
+    gameCtx: CanvasRenderingContext2D | null;
 }
 
-export function setGameInit(value: boolean) {
-  gameInit = value;
+// Setters
+export function setGameInit(value: boolean): void {
+    gameInit = value;
 }
 
-export function getGameInit() {
-  return gameInit;
+export function setGameRun(value: boolean): void {
+    gameRun = value;
 }
 
-export function setGameRun(value: boolean) {
-  gameRun = value;
+export function setPaused(value: boolean): void {
+    paused = value;
 }
 
-export function getGameRun() {
-  return gameRun;
+// Getters
+export function getGameInit(): boolean {
+    return gameInit;
 }
 
-export function setPaused(value: boolean) {
-  paused = value;
+export function getGameRun(): boolean {
+    return gameRun;
 }
 
-export function isPaused() {
-  return paused;
+export function getPaused(): boolean {
+    return paused;
+}
+
+// Reset all game states
+export function resetGameStates(): void {
+    gameInit = false;
+    gameRun = true;
+    paused = false;
 }

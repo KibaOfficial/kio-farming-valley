@@ -3,7 +3,7 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-class Vector2 {
+export class Vector2 {
   x: number;
   y: number;
 

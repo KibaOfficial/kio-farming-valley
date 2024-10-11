@@ -38,3 +38,16 @@ export function updateLayer(
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
   drawFn(ctx);
 }
+
+export function updateFPS(dt: number, ctx: CanvasRenderingContext2D) {
+  
+  const fps = 1 / dt
+
+  updateLayer(ctx, (ctx: CanvasRenderingContext2D) => {
+    ctx.font = '20px Arial';
+    ctx.fillStyle = 'black';
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'top';
+    ctx.fillText(`FPS: ${Math.round(fps)}`, ctx.canvas.width - 10, 10);
+  })
+}

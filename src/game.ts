@@ -6,16 +6,13 @@
 import { DeltaTime } from "./classes/DeltaTime.js";
 import { GameCanvas, getGameInit, getGameRun, getPaused, setGameInit } from "./constants.js";
 import Logger from "./tools/Logger.js";
-import { initCanvas } from "./utils.js";
+import { initCanvas, updateFPS } from "./utils.js";
 
 const deltaTime = new DeltaTime();
 let currentWidth: number = window.innerWidth;
 let currentHeight: number = window.innerHeight;
-let fps: number;
-
 
 let { game, gameCtx }: GameCanvas = { game: null, gameCtx: null };
-
 
 export function gameLoop(currentTime: DOMHighResTimeStamp) {
   if (!getGameInit()) {
@@ -36,8 +33,6 @@ export function gameLoop(currentTime: DOMHighResTimeStamp) {
     deltaTime.update(currentTime);
     const dt = deltaTime.getDelta();
 
-    fps = 1000 / dt;
-
     if (currentWidth !== window.innerWidth || currentHeight !== window.innerHeight) {
       if (game) {
         game.width = window.innerWidth;
@@ -49,6 +44,8 @@ export function gameLoop(currentTime: DOMHighResTimeStamp) {
         Logger({ status: "INFO", message: `Canvas resized to: ${currentWidth}x${currentHeight}` });
       }
     }
+
+    updateFPS(dt, gameCtx!)
 
     requestAnimationFrame(gameLoop);
   }

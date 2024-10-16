@@ -31,7 +31,7 @@ export class WindowManager {
     }
   }
 
-  public getDimensions(): { width: number; height: number } {
+  private getDimensions(): { width: number; height: number } {
     return { width: this.currentWidth, height: this.currentHeight };
   }
 

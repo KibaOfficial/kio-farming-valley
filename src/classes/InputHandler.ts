@@ -19,7 +19,7 @@ export class InputManager {
   private onKeyDown(event: KeyboardEvent): void {
     if (event.key === "Escape") {
       setPaused(!getPaused());
-      if (getPaused()) {
+      if (!getPaused()) {
         Logger({ status: 'DEBUG', message: "Game Paused" });
       } else {
         Logger({ status: 'DEBUG', message: "Game Resumed" });

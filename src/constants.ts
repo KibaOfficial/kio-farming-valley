@@ -5,7 +5,6 @@
 
 let gameInit: boolean = false;
 let gameRun: boolean = true;
-let paused: boolean = false;
 
 export interface GameCanvas {
     game: HTMLCanvasElement | null;
@@ -21,9 +20,6 @@ export function setGameRun(value: boolean): void {
     gameRun = value;
 }
 
-export function setPaused(value: boolean): void {
-    paused = value;
-}
 
 // Getters
 export function getGameInit(): boolean {
@@ -34,13 +30,8 @@ export function getGameRun(): boolean {
     return gameRun;
 }
 
-export function getPaused(): boolean {
-    return paused;
-}
-
 // Reset all game states
 export function resetGameStates(): void {
     gameInit = false;
     gameRun = true;
-    paused = false;
 }
